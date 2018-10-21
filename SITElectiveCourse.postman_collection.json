@@ -1,0 +1,625 @@
+{
+	"info": {
+		"_postman_id": "9e3e027b-6a12-4c74-9597-79c76ecf7538",
+		"name": "SITElectiveCourse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Student Service",
+			"item": [
+				{
+					"name": "get all students",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a46d13f4-70da-497b-bc67-70547444fd2e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"server should response with 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{STUDENT_SERVICE}}/students",
+							"host": [
+								"{{STUDENT_SERVICE}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get student by studentId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f53aa45c-5296-4b5b-a6e8-edfb0f77f6c4",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"server should response with 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test('schema is valid', function() {",
+									"    var schema = {",
+									"        \"items\": {",
+									"            \"type\": \"object\"",
+									"        }",
+									"    };",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+									"    var subSchema = {",
+									"        \"required\": [",
+									"            \"id\",",
+									"            \"studentId\", ",
+									"            \"firstname\",",
+									"            \"surname\",",
+									"            \"department\",",
+									"            \"faculty\",",
+									"            \"year\"",
+									"         ],",
+									"        \"properties\": {",
+									"            \"id\": {",
+									"              \"type\": \"integer\"",
+									"            },",
+									"            \"studentId\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"firstname\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"surname\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"department\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"faculty\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"year\": {",
+									"              \"type\": \"integer\"",
+									"            }",
+									"            ",
+									"            ",
+									"        }",
+									"    }",
+									"    for(let i=0;i<jsonData.length;i++){",
+									"        pm.expect(jsonData[i]).to.not.eql(undefined);",
+									"        pm.expect(tv4.validate(data[i],subSchema)).to.be.true;",
+									"    }",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{STUDENT_SERVICE}}/students?studentId=59130500052",
+							"host": [
+								"{{STUDENT_SERVICE}}"
+							],
+							"path": [
+								"students"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": "59130500052"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get student by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "32818643-bd13-465f-9182-a1cea2bdbc07",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"server should response with 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{STUDENT_SERVICE}}/students/1",
+							"host": [
+								"{{STUDENT_SERVICE}}"
+							],
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b745dc47-ac52-4de7-b2b0-e3debda26a18",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"server should response with 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"studentId\": \"59130500056\",\n\t\"firstname\": \"asdaasd\",\n\t\"surname\": \"asd\",\n\t\"department\": \"IT\",\n\t\"faculty\": \"SIT\",\n\t\"year\": 3\n}"
+						},
+						"url": {
+							"raw": "{{STUDENT_SERVICE}}/students",
+							"host": [
+								"{{STUDENT_SERVICE}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enroll Service",
+			"item": [
+				{
+					"name": "Course",
+					"item": [
+						{
+							"name": "get all courses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d4bb4c06-e8b1-4516-a010-14caecf4afd5",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/courses",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create course",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "abf0e9d3-cbf4-4e35-a05d-66f1b23c13cb",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"code\": \"INT305\",\n\t\"name\": \"What course\",\n\t\"lecturer\": {\n\t\t\"id\": 1\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/courses",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get course by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "aefe738a-2a11-4d6c-9588-3201b3b45adb",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/courses/1",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"courses",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Enrollment",
+					"item": [
+						{
+							"name": "get all enrollments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4c89738a-a35d-4445-8a21-8579164ef5c4",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/enrollments",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"enrollments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get enrollment by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "dfec99af-e1c2-4bd0-a598-4ebcca139f74",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/enrollments/1",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"enrollments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Enrollable Course",
+					"item": [
+						{
+							"name": "get all enrollable courses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1802570f-7ef9-4845-8226-57a367a6a01c",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/enrolls",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"enrolls"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get enrollable course by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3e952709-4953-40c5-8ff9-88376bb484dc",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/enrolls/1",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"enrolls",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create enrollable course",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6fffc0ab-f523-4f35-b18f-ea2e4c7fe8da",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"course_id\": 2,\n\t\"max_seat\": 1000,\n\t\"allowed_years\": [1,4]\n}"
+								},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/enrolls",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"enrolls"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enroll student to course",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ba08c5f-6f5a-4213-b8d6-f3632c871d0c",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"student_id\": 3\n}"
+								},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/enrolls/1/enroll",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"enrolls",
+										"1",
+										"enroll"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Lecturer",
+					"item": [
+						{
+							"name": "get all lecturers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a7b1022-6687-4630-ba7e-5f9fbaf8c5df",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/lecturers",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"lecturers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create lecturer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9dbfb087-ee90-45fb-838c-2cc4eec79329",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"server should response with 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstname\": \"Kittiphan\",\n\t\"surname\": \"Puapholthep\"\n}"
+								},
+								"url": {
+									"raw": "{{ENROLL_SERVICE}}/lecturers",
+									"host": [
+										"{{ENROLL_SERVICE}}"
+									],
+									"path": [
+										"lecturers"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
