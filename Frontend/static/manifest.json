@@ -1,0 +1,23 @@
+{
+  "short_name": "KMUTT Passport",
+  "name": "KMUTT Passport",
+  "description": "รวมกิจกรรมเด็ดที่เด็กบางมดไม่ควรพลาด",
+  "icons": [
+    {
+      "src": "/static/img/logo-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/img/logo-512x512.png",      
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#4F4F4F",
+  "display": "minimal-ui",
+  "scope": "/",
+  "theme_color": "#4F4F4F ",
+  "orientation": "portrait"
+}

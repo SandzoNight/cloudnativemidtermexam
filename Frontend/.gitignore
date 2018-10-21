@@ -1,0 +1,18 @@
+node_modules
+
+passport-api/.env
+passport-api/.next/
+passport-api/node_modules
+
+passport-checkin/.env
+passport-checkin/node_modules
+
+passport-frontend/.env
+passport-frontend/.next/
+passport-frontend/node_modules
+
+#For robotframework
+**/test/**/log.html
+**/test/**/output.xml
+**/test/**/report.html
+**/test/**/selenium-screenshot-*
