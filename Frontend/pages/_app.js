@@ -24,9 +24,7 @@ class MyApp extends App {
       <Container>
         <Provider store={reduxStore}>
           <div>
-            <Navbar user={this.props.user} content={this.props.isAllowAccess === true
-              ? (<Component user={this.props.user} {...pageProps} />)
-              : (<Error statusCode={404} />)} />
+            <Navbar user={this.props.user} content={<Component user={this.props.user} {...pageProps}  />} />
           </div>
         </Provider>
       </Container>
