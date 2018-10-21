@@ -22,6 +22,8 @@ public class Course implements Serializable {
     @NotNull
     private String name;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
     private Lecturer lecturer;
 
     public Course(@NotNull String code, @NotNull String name, Lecturer lecturer) {
