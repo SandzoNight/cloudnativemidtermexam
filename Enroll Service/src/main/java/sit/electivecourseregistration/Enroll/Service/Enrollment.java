@@ -22,12 +22,12 @@ public class Enrollment {
     private Course course;
 
     @NotNull
-    private String studentId;
+    private Long studentId;
 
     public Enrollment() {
     }
 
-    public Enrollment(@NotNull Course course, @NotNull String studentId) {
+    public Enrollment(@NotNull Course course, Long studentId) {
         this.course = course;
         this.studentId = studentId;
     }
@@ -48,11 +48,11 @@ public class Enrollment {
         this.course = course;
     }
 
-    public String getStudentId() {
+    public Long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
 }
