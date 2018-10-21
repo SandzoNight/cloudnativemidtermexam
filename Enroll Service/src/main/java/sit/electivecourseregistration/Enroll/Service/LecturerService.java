@@ -14,4 +14,8 @@ public class LecturerService {
     public List<Lecturer> getAllLecturere() {
         return lecturerRepository.findAll();
     }
+
+    public Lecturer createLecturer(Lecturer lecturer) {
+        return lecturerRepository.save(lecturer);
+    }
 }
