@@ -3,26 +3,32 @@
 for API endpoints visit [Wiki page](https://github.com/SandzoNight/cloudnativemidtermexam/wiki).
 ## Prerequisites
 **Requirements for running the system**
- 1. **For API Services**
- 2. Java 8
- 3. Tomcat
- 4. MySQL Database
- 5. **For Frontend web server**
-	 - Node.js server 
+
+**For API Services**
+ 1. Java 8
+ 2. Tomcat
+ 3. MySQL Database
+ 
+**For Frontend web server**
+ 1. Node.js server 
 
 **Requirements for developing**
- 6. **For API Services**
-	- Java Development Kit (JDK) 1.8.0
-	- Maven
-	- Spring boot
-	- MySQL Database
- 7. **For Frontend web server**
-	 - Node.js
- 8. and your favorite editor!
+ 
+ **For API Services**
+ 1. Java Development Kit (JDK) 1.8.0
+ 2. Maven
+ 3. Spring boot
+ 4. MySQL Database
+
+**For Frontend web server**
+ - Node.js
+
+and your favorite editor!
+
 ## Running a development server
 **For API Services**
 
- 9. On Windows
+ - On Windows
 	 1. `cd {service}`
 	 2. Edit application.properties values:
 		 - spring.datasource.url
@@ -30,7 +36,7 @@ for API endpoints visit [Wiki page](https://github.com/SandzoNight/cloudnativemi
 		 - spring.datasource.password=
 	 4. `mvn clean package`
 	 5. `java -jar target/{built-jar-file.jar} --server.port={PORT}`
- 10. On MacOS
+ - On MacOS
 	- *coming soon..*
 ## How to use this software
 
